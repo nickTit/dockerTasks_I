@@ -1,0 +1,31 @@
+FROM golang:1.22.0-alpine AS build
+
+
+WORKDIR /opt
+
+
+ARG SECRET=opa
+ENV SECRET_ENV=$SECRET
+
+
+COPY ./main.go .
+
+
+RUN echo $SECRET_ENV > ./secret.txt
+
+
+RUN go mod init app
+RUN go get
+
+RUN go build -o ./app ./main.go
+
+FROM alpine:3.10.3
+
+WORKDIR /app
+
+
+COPY --from=build /opt/app .
+COPY --from=build /opt/secret.txt .
+
+
+CMD ["./app"]

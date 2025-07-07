@@ -1,0 +1,2 @@
+docker run -d -p 5000:5000 --name registry --rm  -v ./registry_data:/var/lib/registry registry:latest
+- loading local repo + rename imare + push to the registry

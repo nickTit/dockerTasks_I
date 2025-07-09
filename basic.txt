@@ -1,2 +1,18 @@
 docker run -d -p 5000:5000 --name registry --rm  -v ./registry_data:/var/lib/registry registry:latest
 - loading local repo + rename imare + push to the registry
+
+
+docker update --restart ..... <cont_name> - update restsart policy while container is running 
+
+
+docker run -p 80:80 -d --rm --name dd --cap-drop ALL --cap-add CHOWN --cap-add SETGID  --cap-add SETUID nginx:latest - least requirements for nginx: chown+strgid+setuid
+
+
+ docker run --device /dev/sdd:/dev/sdd nginx:stable - mounting disc inside a container
+
+
+
+ docker network create --driver bridge inno-25-bridge  - creating network by hands
+
+docker run -v /var/run/docker.sock:/var/run/docker.sock  --it -d --name dd  docker sh - launch docker in docker, more efficient and less danger way
+
